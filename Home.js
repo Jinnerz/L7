@@ -108,6 +108,12 @@ const Home = ({navigation}) => {
                 />
             </View>
 
+            <View style={{marginTop:10}}>
+                <Button
+                    title="Favourites"
+                    onPress={() => navigation.navigate("Favourites")}
+                />
+            </View>
 
         </View>
     );

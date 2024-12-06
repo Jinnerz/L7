@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Text, View, Button, TextInput, StyleSheet, Alert} from 'react-native';
-import {datasource} from "./Data";
+import {datasource2} from "./Data2";
 
 const styles = StyleSheet.create({
     inputContainer: {
@@ -19,10 +19,9 @@ const styles = StyleSheet.create({
     }
 })
 
-const Edit = ({navigation, route}) => {
+const EditFav = ({navigation, route}) => {
     const [activity, setActivity] = useState(route.params.activity);
     const [price, setPrice] = useState(route.params.price.toString());
-    //.toString() is a function that converts the integer to string for editing and displaying purposes
 
     return (
         <View style={{marginTop:50, padding: 10}}>
@@ -53,9 +52,9 @@ const Edit = ({navigation, route}) => {
                             if (route.params.category === 'Expense') {
                                 indexnum = 0;
                             }
-                            datasource[indexnum].data[route.params.index].activity = activity;
-                            datasource[indexnum].data[route.params.index].price = Number(price);
-                            navigation.navigate("Home");
+                            datasource2[indexnum].data[route.params.index].activity = activity;
+                            datasource2[indexnum].data[route.params.index].price = Number(price);
+                            navigation.navigate("Favourite");
                         }
                         }
                     />
@@ -71,8 +70,8 @@ const Edit = ({navigation, route}) => {
                             }
                             Alert.alert("Are you sure?", '',
                                 [{text: 'Yes', onPress: () => {
-                                        datasource[indexnum].data.splice(route.params.index,1);
-                                        navigation.navigate("Home");
+                                        datasource2[indexnum].data.splice(route.params.index,1);
+                                        navigation.navigate("Favourite");
                                     }},
                                     {text: 'No'}
                                 ]
@@ -88,4 +87,4 @@ const Edit = ({navigation, route}) => {
     );
 };
 
-export default Edit;
+export default EditFav;
